@@ -3,85 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Discord Bot – Commands & Features</title>
-
+<title>community manager Dashboard</title>
 <style>
-:root {
-  --bg:#0f172a; --bg2:#020617; --text:#e5e7eb; --accent:#6366f1;
-  --ok:#22c55e; --warn:#eab308; --down:#ef4444;
-}
-.light { --bg:#f8fafc; --bg2:#e2e8f0; --text:#020617; }
-
-* { box-sizing: border-box; }
-
 body {
-  margin:0; font-family:Arial, Helvetica, sans-serif;
-  background:var(--bg); color:var(--text); transition:.3s;
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: #f5f5f7;
+  color: #222;
+  transition: all 0.3s;
+}
+body.dark {
+  background: #121212;
+  color: #e5e7eb;
 }
 
+/* NAVIGATION */
 nav {
-  position:sticky; top:0; background:var(--bg2);
-  padding:15px 20px; display:flex; justify-content:space-between; align-items:center; z-index:999;
+  background: #2a2a2a;
+  color: #fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
-nav a, nav button { color:var(--text); margin-right:15px; text-decoration:none; font-weight:bold; background:none; border:none; cursor:pointer; }
+nav a, nav button {
+  color: #fff;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:600;
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+}
+nav a:hover, nav button:hover { opacity:0.8; }
 
+/* HEADER */
 header {
-  padding: 60px 20px; text-align:center;
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  padding:100px 20px;
+  text-align:center;
+  background: linear-gradient(120deg,#6c63ff,#5751ff);
+  color:#fff;
 }
-header h1 { font-size:3rem; margin-bottom:10px; }
-header p { font-size:1.2rem; max-width:700px; margin:0 auto 30px; color:#e0e7ff; }
+header h1{font-size:3rem;margin-bottom:15px;}
+header p{font-size:1.2rem;margin-bottom:30px;max-width:700px;margin-left:auto;margin-right:auto;}
+.header-buttons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-bottom:20px;}
+.header-buttons a{padding:12px 28px;border-radius:10px;font-weight:600;text-decoration:none;transition:.2s;}
+.invite-btn{background:#222;color:#fff;}
+.invite-btn.disabled{opacity:.4;pointer-events:none;filter:grayscale(1);}
+.invite-btn:hover{background:#111;transform:translateY(-2px);}
+.server-btn{background:#6c63ff;color:#fff;}
+.server-btn:hover{transform:translateY(-2px);}
+#searchInput{padding:10px 15px;width:100%;max-width:400px;border-radius:10px;border:1px solid #ccc;font-size:1rem;}
 
-.button-group { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
-.invite-btn {
-  display:inline-block; padding:14px 28px; background:#0f172a; color:#fff;
-  text-decoration:none; border-radius:8px; font-weight:bold;
-  transition: transform .2s, background .2s;
-}
-.invite-btn:hover { background:#020617; transform:translateY(-2px); }
-.server-btn { background:#5865F2; }
-.server-btn:hover { background:#4752C4; }
-.disabled { opacity:.4; pointer-events:none; cursor:not-allowed; filter:grayscale(1); }
-
-main { max-width:1100px; margin:0 auto; padding:40px 20px; }
-section { margin-bottom:60px; opacity:0; transform:translateY(40px); transition:.8s; }
-section.show { opacity:1; transform:none; }
-section h2 { font-size:2rem; margin-bottom:20px; border-left:5px solid var(--accent); padding-left:15px; }
-
-.command { background:var(--bg2); border-radius:10px; padding:15px 20px; margin-bottom:12px; position:relative; }
-.command code { color:#a5b4fc; font-size:1rem; }
-.command p { margin:6px 0 0; color:#cbd5f5; font-size:.95rem; }
-.copy { position:absolute; top:10px; right:10px; cursor:pointer; }
-
-#maintenanceWarning {
-  max-width:1100px; margin:20px auto; padding:20px;
-  background:#f59e0b; color:#020617; border-radius:12px; font-weight:bold; display:none;
-}
-
-footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a3b8; font-size:0.9rem; }
-
-#topBtn {
-  position:fixed; bottom:20px; right:20px; padding:12px;
-  border-radius:50%; border:none; font-size:1.2rem; display:none; cursor:pointer;
-}
-
-.status-box { background:var(--bg2); border-radius:12px; padding:25px; margin-bottom:30px; }
-.badge { padding:6px 14px; border-radius:999px; font-weight:bold; }
-.online { background:var(--ok); }
-.maintenance { background:var(--warn); }
-.offline { background:var(--down); }
-
-.faq { background:var(--bg2); border-radius:10px; padding:15px; margin-bottom:10px; cursor:pointer; }
-.faq p { display:none; color:#cbd5f5; margin-top:10px; }
+/* MAIN CONTENT */
+main{max-width:1200px;margin:0 auto;padding:50px 20px;display:grid;grid-template-columns:1fr;gap:50px;}
+section h2{font-size:2rem;border-bottom:3px solid #6c63ff;padding-bottom:8px;margin-bottom:25px;}
+.card{background:#fff;border-radius:15px;padding:20px;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:transform .2s;}
+body.dark .card{background:#1e1e2a;}
+.card:hover{transform:translateY(-5px);}
+.command{display:flex;flex-direction:column;background:#f0f0f3;padding:12px 15px;border-radius:8px;margin-bottom:10px;position:relative;}
+body.dark .command{background:#2a2a3a;}
+.command code{font-weight:bold;color:#6c63ff;}
+.command p{margin-top:5px;font-size:.95rem;color:#555;}
+body.dark .command p{color:#ccc;}
+.copy{position:absolute;top:10px;right:10px;cursor:pointer;font-size:1rem;}
+.status-box{display:flex;gap:20px;flex-wrap:wrap;}
+.status{padding:10px 18px;border-radius:999px;font-weight:bold;}
+.online{background:#28a745;color:#fff;}
+.maintenance{background:#ffc107;color:#222;}
+.offline{background:#dc3545;color:#fff;}
+#topBtn{position:fixed;bottom:25px;right:25px;padding:12px;border-radius:50%;border:none;background:#6c63ff;color:#fff;font-size:1.2rem;cursor:pointer;display:none;box-shadow:0 4px 20px rgba(0,0,0,.1);}
+.changelog-entry{background:#f0f0f3;padding:10px 15px;border-radius:8px;margin-bottom:10px;}
+body.dark .changelog-entry{background:#2a2a3a;color:#ccc;}
 </style>
 </head>
-
 <body>
 
 <nav>
   <div>
     <a href="#commands">Commands</a>
     <a href="#status">Status</a>
+    <a href="#" onclick="showChangeLog()">ChangeLog</a>
   </div>
   <div>
     <button onclick="toggleTheme()">🌓</button>
@@ -89,150 +95,160 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
 </nav>
 
 <header>
-  <h1>All-in-One Discord Bot</h1>
-  <p>Powerful moderation, tickets, reaction roles, automod, announcements and premium features – built for modern Discord servers.</p>
-
-  <div class="button-group">
+  <h1>community manager dashboard</h1>
+  <p>All-in-one dashboard: moderation, tickets, reaction roles, automod, announcements, and premium features.</p>
+  <div class="header-buttons">
     <a id="inviteBtn" class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1370876070319882421&permissions=8&scope=bot" target="_blank">🤖 Invite Bot</a>
-    <a id="serverBtn" class="invite-btn server-btn" href="https://discord.gg/9DfJWYDsdp" target="_blank">💬 Join Discord Server</a>
+    <a id="serverBtn" class="server-btn" href="https://discord.gg/9DfJWYDsdp" target="_blank">💬 Join Server</a>
   </div>
+  <input id="searchInput" type="text" placeholder="Search for a feature or command..." oninput="filterCommands()">
 </header>
 
-<div id="maintenanceWarning">⚠️ Maintenance mode active – The bot is currently not saving any data! Do not use setup or redeem your premium key!</div>
+<main>
 
-<main id="commands">
+<section id="status" class="card">
+<h2>Bot Status</h2>
+<div class="status-box">
+  <span>Status: <span id="statusBadge" class="status online">ONLINE</span></span>
+  <span>Version: v1.0.1</span>
+</div>
+</section>
 
-  <section id="status">
-    <h2>Bot Status</h2>
-    <div class="status-box">
-      <p>Status: <span id="statusBadge" class="badge">ONLINE</span></p>
-      <p>Version: v1.0.1</p>
-    </div>
-  </section>
+<div id="commandsContainer">
 
-
-  <section>
-    <h2>Moderation</h2>
-    <div class="command"><code>/kick &lt;user&gt; [reason]</code><p>Kicks a user from the server. Requires the <b>Kick</b> role.</p></div>
-    <div class="command"><code>/ban &lt;user&gt; [reason]</code><p>Permanently bans a user. Requires the <b>Ban</b> role.</p></div>
-    <div class="command"><code>/mute &lt;user&gt; &lt;minutes&gt; [reason]</code><p>Temporarily mutes a user. Role: <b>Mute</b>.</p></div>
-    <div class="command"><code>/unmute &lt;user&gt;</code><p>Removes a mute. Role: <b>Unmute</b>.</p></div>
-    <div class="command"><code>/warn &lt;user&gt; [reason]</code><p>Warns a user. Role: <b>Warn</b>.</p></div>
-    <div class="command"><code>/warnlist &lt;user&gt;</code><p>Displays all warnings. Role: <b>WarnView</b>.</p></div>
-    <div class="command"><code>/clear &lt;channel&gt; &lt;amount&gt;</code><p>Deletes a specific number of messages in a channel. Role: <b>Clear</b>.</p></div>
-    <div class="command"><code>/clear2</code><p>Deletes all messages in the current channel. Role: <b>Clear2</b>.</p></div>
-    <div class="command"><code>/nuke</code><p>Completely resets a channel. Role: <b>Nuke</b>.</p></div>
-  </section>
-
-
-  <section>
-    <h2>Tickets</h2>
-    <div class="command"><code>/ticketsetup &lt;category&gt; [staff_roles]</code><p>Sets up the ticket system in a category. <b>Admin only</b>.</p></div>
-    <div class="command"><code>/ticket</code><p>Opens a new support ticket.</p></div>
-    <div class="command"><code>/close</code><p>Closes a ticket (ticket owner or staff).</p></div>
-    <div class="command"><code>/reopen</code><p>Reopens a closed ticket (staff only).</p></div>
-    <div class="command"><code>/delete</code><p>Deletes a ticket (staff only).</p></div>
-  </section>
+<section class="card">
+<h2>Moderation</h2>
+<div class="command"><code>/kick &lt;user&gt; [reason]</code><p>Kicks a user. Requires Kick role.</p></div>
+<div class="command"><code>/ban &lt;user&gt; [reason]</code><p>Bans permanently. Requires Ban role.</p></div>
+<div class="command"><code>/mute &lt;user&gt; &lt;minutes&gt; [reason]</code><p>Mutes temporarily. Role: Mute.</p></div>
+<div class="command"><code>/unmute &lt;user&gt;</code><p>Removes a mute. Role: Unmute.</p></div>
+<div class="command"><code>/warn &lt;user&gt; [reason]</code><p>Warn user. Role: Warn.</p></div>
+<div class="command"><code>/warnlist &lt;user&gt;</code><p>Show all warnings. Role: WarnView.</p></div>
+<div class="command"><code>/clear &lt;channel&gt; &lt;amount&gt;</code><p>Delete messages. Role: Clear.</p></div>
+<div class="command"><code>/clear2</code><p>Delete all messages in channel. Role: Clear2.</p></div>
+<div class="command"><code>/nuke</code><p>Reset a channel. Role: Nuke.</p></div>
+</section>
 
 
-  <section>
-    <h2>Reaction Roles</h2>
-    <div class="command"><code>/rr &lt;channel&gt; &lt;message_id&gt; &lt;role&gt; &lt;emoji&gt;</code><p>Adds a reaction role. Requires the <b>RRManager</b> role.</p></div>
-  </section>
+<section class="card">
+<h2>Tickets</h2>
+<div class="command"><code>/ticketsetup &lt;category&gt; [staff_roles]</code><p>Setup ticket system. Admin only.</p></div>
+<div class="command"><code>/ticket</code><p>Open ticket.</p></div>
+<div class="command"><code>/close</code><p>Close ticket (owner/staff).</p></div>
+<div class="command"><code>/reopen</code><p>Reopen ticket (staff only).</p></div>
+<div class="command"><code>/delete</code><p>Delete ticket (staff only).</p></div>
+</section>
 
 
-  <section>
-    <h2>Anti-Link & Automod</h2>
-    <div class="command"><code>/bypass &lt;mention|id&gt;</code><p>Allows a user to bypass link protection. <b>Admin only</b>.</p></div>
-    <div class="command"><code>/bypasslist</code><p>Displays all users with bypass permission. Admin only.</p></div>
-    <div class="command"><code>/bypassremove &lt;id&gt;</code><p>Removes a user from the bypass list. Admin only.</p></div>
-  </section>
+<section class="card">
+<h2>Reaction Roles</h2>
+<div class="command"><code>/rr &lt;channel&gt; &lt;message_id&gt; &lt;role&gt; &lt;emoji&gt;</code><p>Add reaction role. Role: RRManager.</p></div>
+</section>
 
 
-  <section>
-    <h2>Shutdown & Updates</h2>
-    <div class="command"><code>/shutdownsetup &lt;channel&gt;</code><p>Defines the channel for shutdown and update logs. <b>Admin only</b>.</p></div>
-  </section>
+<section class="card">
+<h2>Anti-Link & Automod</h2>
+<div class="command"><code>/bypass &lt;mention|id&gt;</code><p>Bypass link protection. Admin only.</p></div>
+<div class="command"><code>/bypasslist</code><p>Show bypass users. Admin only.</p></div>
+<div class="command"><code>/bypassremove &lt;id&gt;</code><p>Remove bypass. Admin only.</p></div>
+</section>
 
 
-  <section>
-    <h2>Premium</h2>
-    <div class="command"><code>/preis</code><p>Shows current premium prices.</p></div>
-    <div class="command"><code>/redeem &lt;key&gt;</code><p>Redeems a premium key.</p></div>
-  </section>
-
-  <section>
-    <h2>Say & Announce</h2>
-    <div class="command"><code>/say &lt;channel&gt; &lt;message&gt;</code><p>Sends a message as the bot. Role: <b>Say</b>.</p></div>
-    <div class="command"><code>/announce &lt;channel&gt; &lt;message&gt; &lt;time&gt;</code><p>Schedules an announcement. Role: <b>Announce</b>.</p></div>
-    <div class="command"><code>/announce_list</code><p>Lists all scheduled announcements. Admin only.</p></div>
-    <div class="command"><code>/announce_cancel &lt;id&gt;</code><p>Cancels a scheduled announcement. Admin only.</p></div>
-  </section>
+<section class="card">
+<h2>Shutdown & Updates</h2>
+<div class="command"><code>/shutdownsetup &lt;channel&gt;</code><p>Setup shutdown/update log channel. Admin only.</p></div>
+</section>
 
 
-  <section>
-    <h2>Other Commands</h2>
-    <div class="command"><code>/server</code><p>Creates and updates server roles. Admin only.</p></div>
-    <div class="command"><code>/lang &lt;de|en&gt;</code><p>Sets the server language. Admin only.</p></div>
-  </section>
+<section class="card">
+<h2>Premium</h2>
+<div class="command"><code>/price</code><p>Show premium prices.</p></div>
+<div class="command"><code>/redeem &lt;key&gt;</code><p>Redeem premium key.</p></div>
+</section>
+
+
+<section class="card">
+<h2>Say & Announce</h2>
+<div class="command"><code>/say &lt;channel&gt; &lt;message&gt;</code><p>Send message as bot. Role: Say.</p></div>
+<div class="command"><code>/announce &lt;channel&gt; &lt;message&gt; &lt;time&gt;</code><p>Schedule announcement. Role: Announce.</p></div>
+<div class="command"><code>/announce_list</code><p>List all announcements. Admin only.</p></div>
+<div class="command"><code>/announce_cancel &lt;id&gt;</code><p>Cancel announcement. Admin only.</p></div>
+</section>
+
+
+<section class="card">
+<h2>Other Commands</h2>
+<div class="command"><code>/server</code><p>Update server roles. Admin only.</p></div>
+<div class="command"><code>/lang &lt;de|en&gt;</code><p>Set server language. Admin only.</p></div>
+</section>
+
+</div>
+
+
+<section id="changelog" class="card">
+<h2>ChangeLog</h2>
+<div class="changelog-entry"><strong>v1.0.0</strong> – Updated /price</div>
+</section>
 
 </main>
 
 <footer>
-  © 2025 Discord Bot • Built with focus on security, performance and clean design
+© 2026 Moderation Discord Bot • Best discord Moderation Bot
 </footer>
 
 <button id="topBtn" onclick="scrollTo({top:0,behavior:'smooth'})">⬆</button>
 
 <script>
-const BOT_STATUS = "ONLINE"; // ONLINE | MAINTENANCE | OFFLINE
+// ONLINE | MAINTENANCE | OFFLINE
+const BOT_STATUS = "ONLINE"; 
 const badge = document.getElementById("statusBadge");
 const inviteBtn = document.getElementById("inviteBtn");
 const serverBtn = document.getElementById("serverBtn");
-const warn = document.getElementById("maintenanceWarning");
 
-
-if(BOT_STATUS==="ONLINE"){ 
-    badge.textContent="ONLINE"; 
-    badge.className="badge online"; 
-} else if(BOT_STATUS==="MAINTENANCE"){
-    badge.textContent="MAINTENANCE"; 
-    badge.className="badge maintenance";
-    inviteBtn.classList.add("disabled"); 
-    serverBtn.classList.remove("disabled"); 
-    warn.style.display="block";
-} else {
-    badge.textContent="OFFLINE"; 
-    badge.className="badge offline"; 
-    inviteBtn.classList.add("disabled"); 
-    serverBtn.classList.add("disabled");
+if(BOT_STATUS==="ONLINE"){
+  badge.textContent="ONLINE"; badge.className="status online"; inviteBtn.classList.remove("disabled");
+}else if(BOT_STATUS==="MAINTENANCE"){
+  badge.textContent="MAINTENANCE"; badge.className="status maintenance"; inviteBtn.classList.add("disabled");
+  alert("⚠️ Bot is in maintenance mode. Invite disabled!");
+}else{
+  badge.textContent="OFFLINE"; badge.className="status offline"; inviteBtn.classList.add("disabled"); serverBtn.classList.add("disabled");
+  alert("⚠️ Bot is offline. Invite disabled!");
 }
 
-
+// ---------------- COPY COMMANDS ----------------
 document.querySelectorAll(".command").forEach(c=>{
   const copy = document.createElement("span");
-  copy.className = "copy"; copy.innerText = "📋"; c.appendChild(copy);
-  copy.onclick = ()=> {
-    navigator.clipboard.writeText(c.querySelector("code").innerText);
-    copy.innerText = "✅";
-    setTimeout(()=>copy.innerText="📋",1000);
-  }
+  copy.className="copy"; copy.innerText="📋"; c.appendChild(copy);
+  copy.onclick=()=>{ navigator.clipboard.writeText(c.querySelector("code").innerText); copy.innerText="✅"; setTimeout(()=>copy.innerText="📋",1000);}
 });
 
+// ---------------- THEME ----------------
+function toggleTheme(){document.body.classList.toggle("dark"); localStorage.theme=document.body.className;}
+if(localStorage.theme) document.body.className=localStorage.theme;
 
-function toggleTheme(){ document.body.classList.toggle("light"); localStorage.theme=document.body.className; }
-if(localStorage.theme) document.body.className = localStorage.theme;
-
-
-const obs = new IntersectionObserver(entries=>{ entries.forEach(e=> e.isIntersecting && e.target.classList.add("show")); }, {threshold:.15});
+// ---------------- SHOW SECTIONS ----------------
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>e.isIntersecting&&e.target.classList.add("show"));},{threshold:.15});
 document.querySelectorAll("section").forEach(s=>obs.observe(s));
 
+// ---------------- SCROLL TOP ----------------
+window.onscroll=()=>document.getElementById("topBtn").style.display=window.scrollY>400?"block":"none";
 
-window.onscroll = ()=>document.getElementById("topBtn").style.display = window.scrollY>400 ? "block" : "none";
+// ---------------- SEARCH ----------------
+function filterCommands(){
+  const query=document.getElementById("searchInput").value.toLowerCase();
+  document.querySelectorAll("#commandsContainer .command").forEach(cmd=>{
+    const text=cmd.textContent.toLowerCase();
+    cmd.style.display=text.includes(query)?"flex":"none";
+  });
+}
+
+// ---------------- CHANGELOG ----------------
+function showChangeLog(){
+  const changelog=document.getElementById("changelog");
+  changelog.style.display=changelog.style.display==="block"?"none":"block";
+  changelog.scrollIntoView({behavior:"smooth"});
+}
 </script>
 
 </body>
 </html>
-
-
-
