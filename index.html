@@ -110,7 +110,7 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
     </div>
   </section>
 
-  <!-- Moderation -->
+
   <section>
     <h2>Moderation</h2>
     <div class="command"><code>/kick &lt;user&gt; [reason]</code><p>Kicks a user from the server. Requires the <b>Kick</b> role.</p></div>
@@ -124,7 +124,7 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
     <div class="command"><code>/nuke</code><p>Completely resets a channel. Role: <b>Nuke</b>.</p></div>
   </section>
 
-  <!-- Tickets -->
+
   <section>
     <h2>Tickets</h2>
     <div class="command"><code>/ticketsetup &lt;category&gt; [staff_roles]</code><p>Sets up the ticket system in a category. <b>Admin only</b>.</p></div>
@@ -134,13 +134,13 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
     <div class="command"><code>/delete</code><p>Deletes a ticket (staff only).</p></div>
   </section>
 
-  <!-- Reaction Roles -->
+
   <section>
     <h2>Reaction Roles</h2>
     <div class="command"><code>/rr &lt;channel&gt; &lt;message_id&gt; &lt;role&gt; &lt;emoji&gt;</code><p>Adds a reaction role. Requires the <b>RRManager</b> role.</p></div>
   </section>
 
-  <!-- Anti-Link & Automod -->
+
   <section>
     <h2>Anti-Link & Automod</h2>
     <div class="command"><code>/bypass &lt;mention|id&gt;</code><p>Allows a user to bypass link protection. <b>Admin only</b>.</p></div>
@@ -148,20 +148,19 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
     <div class="command"><code>/bypassremove &lt;id&gt;</code><p>Removes a user from the bypass list. Admin only.</p></div>
   </section>
 
-  <!-- Shutdown & Updates -->
+
   <section>
     <h2>Shutdown & Updates</h2>
     <div class="command"><code>/shutdownsetup &lt;channel&gt;</code><p>Defines the channel for shutdown and update logs. <b>Admin only</b>.</p></div>
   </section>
 
-  <!-- Premium -->
+
   <section>
     <h2>Premium</h2>
     <div class="command"><code>/preis</code><p>Shows current premium prices.</p></div>
     <div class="command"><code>/redeem &lt;key&gt;</code><p>Redeems a premium key.</p></div>
   </section>
 
-  <!-- Say & Announce -->
   <section>
     <h2>Say & Announce</h2>
     <div class="command"><code>/say &lt;channel&gt; &lt;message&gt;</code><p>Sends a message as the bot. Role: <b>Say</b>.</p></div>
@@ -170,7 +169,7 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
     <div class="command"><code>/announce_cancel &lt;id&gt;</code><p>Cancels a scheduled announcement. Admin only.</p></div>
   </section>
 
-  <!-- Other Commands -->
+
   <section>
     <h2>Other Commands</h2>
     <div class="command"><code>/server</code><p>Creates and updates server roles. Admin only.</p></div>
@@ -192,7 +191,7 @@ const inviteBtn = document.getElementById("inviteBtn");
 const serverBtn = document.getElementById("serverBtn");
 const warn = document.getElementById("maintenanceWarning");
 
-// Status-Logik: Server-Button bleibt aktiv während Maintenance
+
 if(BOT_STATUS==="ONLINE"){ 
     badge.textContent="ONLINE"; 
     badge.className="badge online"; 
@@ -200,7 +199,7 @@ if(BOT_STATUS==="ONLINE"){
     badge.textContent="MAINTENANCE"; 
     badge.className="badge maintenance";
     inviteBtn.classList.add("disabled"); 
-    serverBtn.classList.remove("disabled"); // Discord Server beitreten bleibt möglich
+    serverBtn.classList.remove("disabled"); 
     warn.style.display="block";
 } else {
     badge.textContent="OFFLINE"; 
@@ -209,7 +208,7 @@ if(BOT_STATUS==="ONLINE"){
     serverBtn.classList.add("disabled");
 }
 
-// Copy-to-Clipboard
+
 document.querySelectorAll(".command").forEach(c=>{
   const copy = document.createElement("span");
   copy.className = "copy"; copy.innerText = "📋"; c.appendChild(copy);
@@ -220,19 +219,20 @@ document.querySelectorAll(".command").forEach(c=>{
   }
 });
 
-// Theme toggle
+
 function toggleTheme(){ document.body.classList.toggle("light"); localStorage.theme=document.body.className; }
 if(localStorage.theme) document.body.className = localStorage.theme;
 
-// Section animations
+
 const obs = new IntersectionObserver(entries=>{ entries.forEach(e=> e.isIntersecting && e.target.classList.add("show")); }, {threshold:.15});
 document.querySelectorAll("section").forEach(s=>obs.observe(s));
 
-// Scroll-to-top button
+
 window.onscroll = ()=>document.getElementById("topBtn").style.display = window.scrollY>400 ? "block" : "none";
 </script>
 
 </body>
 </html>
+
 
 
