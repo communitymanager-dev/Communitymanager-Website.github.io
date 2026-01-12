@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Manager Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="dark">
+
+<div class="sidebar" id="sidebar">
+  <h2>Dashboard</h2>
+  <nav>
+    <button class="active" data-tab="status">📊 Status</button>
+    <button data-tab="moderation">🛡 Moderation</button>
+    <button data-tab="tickets">🎫 Tickets</button>
+    <button data-tab="reaction">🎭 Reaction Roles</button>
+    <button data-tab="automod">🛠 Automod</button>
+    <button data-tab="premium">💎 Premium</button>
+    <button data-tab="announce">📢 Announce</button>
+    <button data-tab="other">⚙ Other</button>
+    <button data-tab="changelog">📝 Changelog</button>
+    <button id="inviteBtn">🤖 Invite Bot</button>
+    <button id="serverBtn">💬 Join Server</button>
+  </nav>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <button id="themeBtn">🌓</button>
+  </div>
+
+  <div class="main-header">
+    <h1>Community Manager Dashboard</h1>
+    <input id="searchInput" placeholder="Search commands...">
+  </div>
+
+  <div class="tab-content">
+
+    <div id="status" class="active">
+      <div class="panel">
+        <h2>Bot Status</h2>
+        <div class="status-box">
+          <span>Status: <span id="statusBadge" class="status online">ONLINE</span></span>
+          <span>Version: v1.0.1</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="moderation">
+      <div class="panel">
+        <h2>Moderation Commands</h2>
+        <div class="command"><code>/kick &lt;user&gt; [reason]</code><p>Kicks a user.</p></div>
+        <div class="command"><code>/ban &lt;user&gt; [reason]</code><p>Bans a user.</p></div>
+        <div class="command"><code>/mute &lt;user&gt; &lt;minutes&gt;</code><p>Temporary mute.</p></div>
+        <div class="command"><code>/unmute &lt;user&gt;</code><p>Remove mute.</p></div>
+      </div>
+    </div>
+
+    <div id="tickets">
+      <div class="panel">
+        <h2>Ticket Commands</h2>
+        <div class="command"><code>/ticketsetup &lt;category&gt;</code><p>Setup ticket system.</p></div>
+        <div class="command"><code>/ticket</code><p>Open a ticket.</p></div>
+      </div>
+    </div>
+
+    <div id="reaction">
+      <div class="panel">
+        <h2>Reaction Roles</h2>
+        <div class="command"><code>/rr &lt;channel&gt; &lt;message_id&gt; &lt;role&gt; &lt;emoji&gt;</code></div>
+      </div>
+    </div>
+
+    <div id="automod">
+      <div class="panel">
+        <h2>Automod</h2>
+        <div class="command"><code>/bypass &lt;user&gt;</code><p>Bypass link filter.</p></div>
+      </div>
+    </div>
+
+    <div id="premium">
+      <div class="panel">
+        <h2>Premium</h2>
+        <div class="command"><code>/price</code></div>
+        <div class="command"><code>/redeem &lt;key&gt;</code></div>
+      </div>
+    </div>
+
+    <div id="announce">
+      <div class="panel">
+        <h2>Announce</h2>
+        <div class="command"><code>/say &lt;channel&gt; &lt;message&gt;</code></div>
+      </div>
+    </div>
+
+    <div id="other">
+      <div class="panel">
+        <h2>Other</h2>
+        <div class="command"><code>/server</code></div>
+      </div>
+    </div>
+
+    <div id="changelog">
+      <div class="panel">
+        <h2>Changelog</h2>
+        <div id="changelog-entries"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>© 2026 Moderation Discord Bot</footer>
+</div>
+
+<button id="topBtn">⬆</button>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
