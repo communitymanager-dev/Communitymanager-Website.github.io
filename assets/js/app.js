@@ -42,6 +42,7 @@ document.getElementById("serverBtn").onclick = () => {
 /* Changelog */
 const logs = [
   { version: "v1.0.1", changes: ["Price command updated"] }
+  { version: "v1.0.2", changes: ["added anti raid and anti spam"] }
 ];
 
 logs.forEach(log => {
@@ -50,3 +51,4 @@ logs.forEach(log => {
   el.innerHTML = `<strong>${log.version}</strong><p>${log.changes.join(", ")}</p>`;
   document.getElementById("changelog-entries").appendChild(el);
 });
+
