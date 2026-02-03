@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +24,7 @@ body {
   min-height: 100vh;
 }
 
-/* ===== SIDEBAR ===== */
+
 .sidebar {
   width: 250px;
   background: var(--bg-panel);
@@ -66,14 +66,14 @@ body {
   background: var(--accent);
 }
 
-/* ===== MAIN ===== */
+
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== TOPBAR ===== */
+
 .topbar {
   height: 60px;
   background: var(--bg-top);
@@ -100,7 +100,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* ===== HEADER ===== */
+
 .main-header {
   padding: 24px 30px;
   display: flex;
@@ -122,7 +122,7 @@ body {
   width: 260px;
 }
 
-/* ===== CONTENT ===== */
+
 .tab-content {
   padding: 30px;
 }
@@ -135,7 +135,6 @@ body {
   display: block;
 }
 
-/* ===== PANEL ===== */
 .panel {
   background: var(--bg-panel);
   border-radius: 16px;
@@ -149,7 +148,6 @@ body {
   padding-bottom: 6px;
 }
 
-/* ===== COMMANDS ===== */
 .command {
   background: var(--bg-panel-2);
   padding: 14px 16px;
@@ -169,7 +167,7 @@ body {
   color: var(--text-muted);
 }
 
-/* ===== STATUS ===== */
+
 .status-box {
   display: flex;
   gap: 20px;
@@ -184,7 +182,7 @@ body {
   color: #062e14;
 }
 
-/* ===== FOOTER ===== */
+
 footer {
   text-align: center;
   padding: 20px;
@@ -192,7 +190,7 @@ footer {
   font-size: .85rem;
 }
 
-/* ===== SCROLL BTN ===== */
+
 #topBtn {
   position: fixed;
   bottom: 24px;
@@ -204,4 +202,28 @@ footer {
   padding: 14px;
   cursor: pointer;
   display: none;
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-260px);
+    transition: transform .2s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main {
+    width: 100%;
+  }
 }
